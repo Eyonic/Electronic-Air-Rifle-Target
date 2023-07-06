@@ -43,16 +43,16 @@
             const imageHeight = image.height;
 
             shots.forEach(function (shot, index) {
-                const zValue = parseFloat(shot.z);
-                const yValue = parseFloat(shot.y);
+                const zValue = parseFloat(shot.y);
+                const yValue = parseFloat(shot.z);
 
-                const zPixel = Math.round((yValue + 100) / 200 * imageHeight);
-                const yPixel = Math.round((zValue + 100) / 200 * imageWidth);
+                const yPixel = Math.round((yValue + 100) / 200 * imageHeight);
+                const zPixel = Math.round((zValue + 100) / 200 * imageWidth);
 
                 const circle = document.createElement('div');
                 circle.className = 'circle' + (index === shots.length - 1 ? ' last-shot' : '');
-                circle.style.top = zPixel - 15 + 'px';
-                circle.style.left = yPixel - 15 + 'px';
+                circle.style.top = yPixel - 15 + 'px';  // Switched with zPixel
+                circle.style.left = zPixel - 15 + 'px';  // Switched with yPixel
 
                 canvas.appendChild(circle);
             });
