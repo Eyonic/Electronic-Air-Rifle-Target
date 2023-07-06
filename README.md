@@ -28,7 +28,7 @@ Route::get('/electronic-air-rifle-target', function () {
     $json = [
         "target" => [
             ["schot" => "1", "x" => "20", "z" => "20"],
-            ["schot" => "2", "x" => "10", "z" => "20"],
+            ["schot" => "2", "x" => "-10", "z" => "20"],
             ["schot" => "3", "x" => "0", "z" => "0"]
         ]
     ];
