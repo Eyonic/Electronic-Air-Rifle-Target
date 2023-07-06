@@ -1,0 +1,3 @@
+- Arduino Uno / Mega
+- Wifi module / Esp8266
+- Powerbank
