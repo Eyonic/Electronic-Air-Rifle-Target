@@ -29,8 +29,8 @@ def draw_circle(image, x, y, radius, fill_color, outline_color):
 
 # Function to handle the reset button press
 def reset_coordinates():
-    global y_coordinates, z_coordinates
-    y_coordinates = [200] * len(shots)
+    global x_coordinates, z_coordinates
+    x_coordinates = [200] * len(shots)
     z_coordinates = [200] * len(shots)
     for y_entry in y_entries:
         y_entry.delete(0, tk.END)  # Clear the entry field
@@ -50,13 +50,13 @@ def update_coordinates():
         if len(new_shots) > len(shots):
             # Resize coordinate lists if new shots are added
             diff = len(new_shots) - len(shots)
-            y_coordinates.extend([0.0] * diff)
+            x_coordinates.extend([0.0] * diff)
             z_coordinates.extend([0.0] * diff)
 
         for i, shot in enumerate(new_shots):
-            y_value = float(shot["z"])
-            z_value = float(shot["y"])
-            y_coordinates[i] = y_value
+            X_value = float(shot["z"])
+            z_value = float(shot["x"])
+            x_coordinates[i] = X_value
             z_coordinates[i] = z_value
 
         shots.clear()
@@ -80,8 +80,8 @@ def update_image():
     for i in range(len(shots)):
         # Calculate the pixel positions on the image based on the coordinates
         image_width, image_height = image.size
-        z_pixel = int((y_coordinates[i] + 100) / 200 * image_height)  # Convert Y coordinate to pixel position on the Y-axis
-        y_pixel = int((z_coordinates[i] + 100) / 200 * image_width)  # Convert Z coordinate to pixel position on the X-axis
+        z_pixel = int((x_coordinates[i] + 100) / 200 * image_height)  # Convert Y coordinate to pixel position on the Y-axis
+        x_pixel = int((z_coordinates[i] + 100) / 200 * image_width)  # Convert Z coordinate to pixel position on the X-axis
 
         # Define the circle radius and colors
         circle_radius = 15
@@ -92,7 +92,7 @@ def update_image():
         outline_color = (255, 255, 255)  # White outline color
 
         # Draw the circle with a white outline at the specified position
-        draw_circle(updated_image, z_pixel, y_pixel, circle_radius, fill_color, outline_color)
+        draw_circle(updated_image, z_pixel, x_pixel, circle_radius, fill_color, outline_color)
 
 
 
@@ -115,11 +115,11 @@ canvas = tk.Canvas(window, width=image.width, height=image.height)
 canvas.pack()
 
 # Initialize the shot coordinates
-y_coordinates = [0.0] * len(shots)
+x_coordinates = [0.0] * len(shots)
 z_coordinates = [0.0] * len(shots)
 
 # Create lists to store the entry fields for y and z coordinates
-y_entries = []
+x_entries = []
 z_entries = []
 
 
@@ -130,7 +130,7 @@ image_canvas = canvas.create_image(0, 0, anchor=tk.NW, image=image_tk)
 # Function to update the shot coordinates based on the entry fields
 def update_shot_coordinates():
     for i in range(len(shots)):
-        y_coordinates[i] = float(y_entries[i].get())
+        x_coordinates[i] = float(y_entries[i].get())
         z_coordinates[i] = float(z_entries[i].get())
     update_image()
 
