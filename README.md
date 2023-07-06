@@ -46,7 +46,7 @@ The Python Target System empowers shooting enthusiasts by providing a convenient
 
 *Develop a Web Version - Create a web-based version of the application to make it accessible and usable on a tablet.
 
-*Research and choose a suitable web development framework. (Laravel for now) 
+*Score system and multiplayer support.
 
 *Determine Pellet Location Detection Method - Identify an affordable and reliable sensor or method to accurately detect the location of the pellet.
 
