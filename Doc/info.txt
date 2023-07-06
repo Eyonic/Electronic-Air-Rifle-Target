@@ -1,0 +1,1 @@
+Arduino transmits pellet location data to the server, enabling this program to display it on an image. The accepted range is -100 to 100.

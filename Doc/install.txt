@@ -1,0 +1,3 @@
+To ensure proper functionality, please update the URL in ElectronicTarget.py and ensure that bullseye_image.jpg is located in the same folder. 
+
+Additionally, you might need to install certain modules using pip.
