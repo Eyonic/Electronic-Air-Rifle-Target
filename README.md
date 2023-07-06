@@ -23,7 +23,7 @@ Dynamic Shot Addition: If the API returns additional shots, the system dynamical
 API Integration: The system communicates with a specified API endpoint to retrieve shot data in JSON format. It utilizes the requests library to send HTTP requests and retrieve the JSON response.
 
  ```php
-// coordinates range: 100 / -100
+// coordinates range: 100 / -100 ( laravel website,  web.php)
 Route::get('/electronic-air-rifle-target', function () {
     $json = [
         "target" => [
