@@ -1,8 +1,6 @@
 # Electronic-Air-Rifle-Target
 
 
-Reason why I am starting this project: Due to strict import regulations in my country, the cost of the open-source kit is significantly higher, making it less affordable.
-
 Description:
 The Python Target System is a simple and efficient solution that eliminates the need for individuals to walk down the range to check their shots. This system integrates a graphical user interface (GUI) that displays a target image where shots are represented as circles. The system communicates with an API to retrieve shot coordinates and updates the target image in real-time based on the received data.
 
@@ -21,7 +19,7 @@ Dynamic Shot Addition: If the API returns additional shots, the system dynamical
 
 API Integration: The system communicates with a specified API endpoint to retrieve shot data in JSON format. It utilizes the requests library to send HTTP requests and retrieve the JSON response.
 
- ```
+ ```php
 Route::get('/electronic-air-rifle-target', function () {
     $json = [
         "target" => [
