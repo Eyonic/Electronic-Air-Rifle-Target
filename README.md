@@ -27,9 +27,9 @@ API Integration: The system communicates with a specified API endpoint to retrie
 Route::get('/electronic-air-rifle-target', function () {
     $json = [
         "target" => [
-            ["schot" => "1", "y" => "20", "z" => "20"],
-            ["schot" => "2", "y" => "10", "z" => "20"],
-            ["schot" => "3", "y" => "0", "z" => "0"]
+            ["schot" => "1", "x" => "20", "z" => "20"],
+            ["schot" => "2", "x" => "10", "z" => "20"],
+            ["schot" => "3", "x" => "0", "z" => "0"]
         ]
     ];
 
