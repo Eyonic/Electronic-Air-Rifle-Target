@@ -4,7 +4,7 @@
 Description:
 The Python Target System is a simple and efficient solution that eliminates the need for individuals to walk down the range to check their shots. This system integrates a graphical user interface (GUI) that displays a target image where shots are represented as circles. The system communicates with an API to retrieve shot coordinates and updates the target image in real-time based on the received data.
 
-![Target.jpg](https://raw.githubusercontent.com/Eyonic/Electronic-Air-Rifle-Target/main/Doc/example.jpg)
+![Target.jpg](https://raw.githubusercontent.com/Eyonic/Electronic-Air-Rifle-Target/main/Doc/exsample-v1.jpg)
 
 
 Key Features:

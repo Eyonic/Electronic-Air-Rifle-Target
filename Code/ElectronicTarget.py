@@ -16,9 +16,14 @@ except requests.exceptions.RequestException as e:
     messagebox.showerror("Error", f"An error occurred: {e}")
 
 # Function to draw a circle at the specified position
-def draw_circle(image, x, y, radius, color):
+def draw_circle(image, x, y, radius, fill_color, outline_color):
     draw = ImageDraw.Draw(image)
-    draw.ellipse((y - radius, x - radius, y + radius, x + radius), fill=color)
+    # Draw the outer ellipse with the white outline color
+    outer_ellipse = (y - radius, x - radius, y + radius, x + radius)
+    draw.ellipse(outer_ellipse, fill=outline_color, outline=outline_color)
+    # Draw the inner ellipse with the fill color
+    inner_ellipse = (y - radius + 1, x - radius + 1, y + radius - 1, x + radius - 1)
+    draw.ellipse(inner_ellipse, fill=fill_color)
 
 
 
@@ -78,18 +83,18 @@ def update_image():
         z_pixel = int((y_coordinates[i] + 100) / 200 * image_height)  # Convert Y coordinate to pixel position on the Y-axis
         y_pixel = int((z_coordinates[i] + 100) / 200 * image_width)  # Convert Z coordinate to pixel position on the X-axis
 
-
-
-
-        # Define the circle radius and color
+        # Define the circle radius and colors
         circle_radius = 15
         if i == len(shots) - 1:
-            circle_color = (255, 0, 0)  # Red color for the last shot
+            fill_color = (255, 0, 0)  # Red color for the last shot
         else:
-            circle_color = (0, 0, 0)  # Black color for other shots
+            fill_color = (0, 0, 0)  # Black color for other shots
+        outline_color = (255, 255, 255)  # White outline color
 
-        # Draw the circle at the specified position
-        draw_circle(updated_image, z_pixel, y_pixel, circle_radius, circle_color)
+        # Draw the circle with a white outline at the specified position
+        draw_circle(updated_image, z_pixel, y_pixel, circle_radius, fill_color, outline_color)
+
+
 
     # Convert the image to a Tkinter-compatible format
     image_tk = ImageTk.PhotoImage(updated_image)
