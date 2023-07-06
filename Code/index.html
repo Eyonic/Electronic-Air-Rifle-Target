@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YNW</title>
+    <style>
+        #canvas {
+            position: relative;
+        }
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .circle {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: black;
+            border: 1px solid white;
+        }
+
+        .last-shot {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas">
+        <img id="image" src="bullseye_image.jpg" alt="Bullseye Image">
+        <div id="overlay"></div>
+    </div>
+
+    <script>
+        function drawCircles(shots) {
+            const canvas = document.getElementById('overlay');
+            canvas.innerHTML = '';
+
+            const image = document.getElementById('image');
+            const imageWidth = image.width;
+            const imageHeight = image.height;
+
+            shots.forEach(function (shot, index) {
+                const zValue = parseFloat(shot.z);
+                const yValue = parseFloat(shot.y);
+
+                const zPixel = Math.round((yValue + 100) / 200 * imageHeight);
+                const yPixel = Math.round((zValue + 100) / 200 * imageWidth);
+
+                const circle = document.createElement('div');
+                circle.className = 'circle' + (index === shots.length - 1 ? ' last-shot' : '');
+                circle.style.top = zPixel - 15 + 'px';
+                circle.style.left = yPixel - 15 + 'px';
+
+                canvas.appendChild(circle);
+            });
+        }
+
+        function updateCoordinates() {
+            const url = 'http://127.0.0.1/electronic-air-rifle-target';
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const shots = data.target;
+                    drawCircles(shots);
+                })
+                .catch(error => {
+                    console.error('An error occurred:', error);
+                });
+        }
+
+        // Initial update
+        updateCoordinates();
+
+        // Periodic update every second
+        setInterval(updateCoordinates, 1000);
+    </script>
+</body>
+</html>
