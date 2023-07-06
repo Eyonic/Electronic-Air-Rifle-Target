@@ -1,1 +1,1 @@
-failed the test = soundsensor module with big microfoon KY-038 
+Sound Sensor Module, KY-038 ( large microphone ) did not pass the test
