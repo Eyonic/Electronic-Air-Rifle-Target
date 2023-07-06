@@ -3,7 +3,7 @@ import tkinter as tk
 import requests
 import sys
 
-url = "http://127.0.0.1/gunz"
+url = "http://127.0.0.1/electronic-air-rifle-target"
 
 try:
     response = requests.get(url)
