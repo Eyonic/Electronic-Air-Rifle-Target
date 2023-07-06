@@ -32,13 +32,9 @@ Route::get('/electronic-air-rifle-target', function () {
         ]
     ];
 
-    $response = response()->json($json);
-
-    // Add the CORS header to the response
-    $response->header('Access-Control-Allow-Origin', '*');
-
-    return $response;
-});
+    return response()->json($json)
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET');
 });
 ``` 
 The Python Target System empowers shooting enthusiasts by providing a convenient and efficient way to track their shots without the need for physical movement downrange. Its real-time updates, graphical representation, and support for multiple shots make it an invaluable tool for improving shooting accuracy and optimizing training sessions.
