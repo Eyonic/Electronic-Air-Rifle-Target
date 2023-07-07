@@ -4,47 +4,63 @@
     <title>Target Score Calculator</title>
     <script>
         function calculateScore() {
-            var x = parseInt(document.getElementById("xInput").value);
-            var y = parseInt(document.getElementById("yInput").value);
+            fetch('http://127.0.0.1/electronic-air-rifle-target')
+                .then(response => response.json())
+                .then(data => {
+                    var targets = data.target;
 
-            var distance = Math.sqrt((x * x) + (y * y));
-            var score;
+                    // Clear previous results
+                    var resultsContainer = document.getElementById("results");
+                    resultsContainer.innerHTML = "";
 
-            if (distance <= 10) {
-                score = 10;
-            } else if (distance <= 17) {
-                score = 9;
-            } else if (distance <= 24) {
-                score = 8;
-            } else if (distance <= 31) {
-                score = 7;
-            } else if (distance <= 38) {
-                score = 6;
-            } else if (distance <= 46) {
-                score = 5;
-            } else if (distance <= 53) {
-                score = 4;
-            } else if (distance <= 60) {
-                score = 3;
-            } else if (distance <= 67) {
-                score = 2;
-            } else if (distance <= 73) {
-                score = 1;
-            } else {
-                score = 0;
-            }
+                    targets.forEach(target => {
+                        var x = parseInt(target.x);
+                        var y = parseInt(target.z);
 
-            document.getElementById("score").innerHTML = "Score: " + (score + 2);
+                        var distance = Math.sqrt((x * x) + (y * y));
+                        var score;
+
+                        if (distance <= 10) {
+                            score = 10;
+                        } else if (distance <= 17) {
+                            score = 9;
+                        } else if (distance <= 24) {
+                            score = 8;
+                        } else if (distance <= 31) {
+                            score = 7;
+                        } else if (distance <= 38) {
+                            score = 6;
+                        } else if (distance <= 46) {
+                            score = 5;
+                        } else if (distance <= 53) {
+                            score = 4;
+                        } else if (distance <= 60) {
+                            score = 3;
+                        } else if (distance <= 67) {
+                            score = 2;
+                        } else if (distance <= 73) {
+                            score = 1;
+                        } else {
+                            score = 0;
+                        }
+
+                        var result = "Target: " + target.schot + " | Score: " + score;
+                        var resultElement = document.createElement("p");
+                        resultElement.textContent = result;
+                        resultsContainer.prepend(resultElement);
+                    });
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                });
         }
+
+        calculateScore(); // Initial calculation
+        setInterval(calculateScore, 000); // Update every 5 seconds
     </script>
 </head>
 <body>
     <h1>Target Score Calculator</h1>
-    <label for="xInput">Enter X-coordinate:</label>
-    <input type="number" id="xInput"><br>
-    <label for="yInput">Enter Y-coordinate:</label>
-    <input type="number" id="yInput"><br>
-    <button onclick="calculateScore()">Calculate Score</button>
-    <p id="score"></p>
+    <div id="results"></div>
 </body>
 </html>
