@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Target Score Calculator</title>
+    <script>
+        function calculateScore() {
+            var x = parseInt(document.getElementById("xInput").value);
+            var y = parseInt(document.getElementById("yInput").value);
+
+            var distance = Math.sqrt((x * x) + (y * y));
+            var score;
+
+            if (distance <= 10) {
+                score = 10;
+            } else if (distance <= 17) {
+                score = 9;
+            } else if (distance <= 24) {
+                score = 8;
+            } else if (distance <= 31) {
+                score = 7;
+            } else if (distance <= 38) {
+                score = 6;
+            } else if (distance <= 46) {
+                score = 5;
+            } else if (distance <= 53) {
+                score = 4;
+            } else if (distance <= 60) {
+                score = 3;
+            } else if (distance <= 67) {
+                score = 2;
+            } else if (distance <= 73) {
+                score = 1;
+            } else {
+                score = 0;
+            }
+
+            document.getElementById("score").innerHTML = "Score: " + (score + 2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Target Score Calculator</h1>
+    <label for="xInput">Enter X-coordinate:</label>
+    <input type="number" id="xInput"><br>
+    <label for="yInput">Enter Y-coordinate:</label>
+    <input type="number" id="yInput"><br>
+    <button onclick="calculateScore()">Calculate Score</button>
+    <p id="score"></p>
+</body>
+</html>
