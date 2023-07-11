@@ -14,7 +14,7 @@ Real-time Updates: The system continuously fetches the latest shot coordinates f
 
 Graphical Representation: The target image is displayed in a GUI window using the Tkinter library. Shots are depicted as circles on the target, allowing users to visualize their shooting accuracy at a glance.
 
-Multiple Shots Support: The system accommodates multiple shots and provides separate entry fields for each shot's Y and Z coordinates. Each shot is represented by a circle on the target image, making it easy to differentiate between different shots.
+Multiple Shots Support: The system accommodates multiple shots and provides separate entry fields for each shot's Y and X coordinates. Each shot is represented by a circle on the target image, making it easy to differentiate between different shots.
 
 Last Shot Highlight: The system highlights the most recent shot on the target image by drawing it in red, while all other shots are displayed in black. This distinction helps users quickly identify their latest shot.
 
