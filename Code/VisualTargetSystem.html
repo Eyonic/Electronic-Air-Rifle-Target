@@ -41,32 +41,34 @@
                 resultsContainer.innerHTML = "";
 
                 targets.forEach(target => {
-                    var x = parseInt(target.x);
-                    var y = parseInt(target.z);
+                        var x = parseInt(target.x);
+                        var y = parseInt(target.z);
 
-                    var distance = Math.sqrt((x * x) + (y * y));
-                    var score;
+                        var distance = Math.sqrt((x * x) + (y * y));
+                        var score;
 
-                    if (distance <= 17) {
+                        if (distance <= 13) {
                             score = 10;
                         } else if (distance <= 24) {
                             score = 9;
-                        } else if (distance <= 31) {
+                        } else if (distance <= 34) {
                             score = 8;
-                        } else if (distance <= 38) {
+                        } else if (distance <= 44) {
                             score = 7;
-                        } else if (distance <= 52) {
+                        } else if (distance <= 54) {
                             score = 6;
-                        } else if (distance <= 58) {
+                        } else if (distance <= 64) {
                             score = 5;
-                        } else if (distance <= 67) {
+                        } else if (distance <= 74) {
                             score = 4;
-                        } else if (distance <= 70) {
+                        } else if (distance <= 84) {
                             score = 3;
-                        } else if (distance <= 73) {
+                        } else if (distance <= 94) {
                             score = 2;
-                        } else if (distance <= 80) {
+
+                        } else if (distance <= 104) {
                             score = 1;
+
                         } else {
                             score = 0;
                         }
