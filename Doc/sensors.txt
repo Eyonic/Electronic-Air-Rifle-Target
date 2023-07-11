@@ -1,1 +1,1 @@
-Sound Sensor Module, KY-038 ( large microphone ) did not pass the test
+Sound Sensor Module, KY-038 ( large microphone )
