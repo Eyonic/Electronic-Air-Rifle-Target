@@ -8,7 +8,7 @@ This system integrates a graphical user interface (GUI) that displays a target i
 The system communicates with an API to retrieve shot coordinates and updates the target image in real-time based on the received data.
 
 
-![Target.jpg](https://raw.githubusercontent.com/Eyonic/Electronic-Air-Rifle-Target/main/Doc/exsample-v1.jpg)
+![Target.jpg](https://raw.githubusercontent.com/Eyonic/Electronic-Air-Rifle-Target/main/Doc/exsample-v2.jpg)
 
 
 Key Features:
