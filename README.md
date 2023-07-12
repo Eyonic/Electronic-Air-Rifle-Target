@@ -50,6 +50,8 @@ The Python Target System empowers shooting enthusiasts by providing a convenient
 Arduino reports the bullet holes to your website. and you can see it being updated in real time using your tablet or phone.
 
 *Arduino->internet->server->client
+
+
 -------------------------------------------------------------------------------------------------------------------------------
 #Development
 
