@@ -14,7 +14,7 @@
         }
 
         .circle {
-    position: relative;  /* Update from absolute to relative */
+    position: absolute ;  /* Update from absolute to relative */
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -108,14 +108,14 @@
 </head>
 <body>
     <div id="canvas">
-        <img id="image" src="bullseye_image.jpg" alt="Bullseye Image">
+        <img id="image" src="bullseye_image_web.jpg" alt="Bullseye Image">
         <div id="overlay"></div>
     </div>
 
     <div id="results" style="  position: absolute;  right: 34px;  top: 20px;"></div>
 
     <script>
-       function drawCircles(shots) {
+ function drawCircles(shots) {
     const canvas = document.getElementById('overlay');
     canvas.innerHTML = '';
 
@@ -126,14 +126,20 @@
     shots.forEach(function (shot, index) {
         const xValue = parseFloat(shot.x);
         const zValue = parseFloat(shot.z);
+        const circleSize = 30;
+     
+        const xPixel = Math.round((xValue + 100) / 200 * imageWidth) - circleSize / 2;
+        const zPixel = Math.round((zValue + 100) / 200 * imageHeight) - circleSize / 2;
 
-        const xPixel = Math.round((xValue + 100) / 200 * imageHeight);
-        const zPixel = Math.round((zValue + 100) / 200 * imageWidth);
+
+
+
+
 
         const circle = document.createElement('div');
         circle.className = 'circle' + (index === shots.length - 1 ? ' last-shot' : '');
-        circle.style.left = xPixel - 25 + 'px';
-        circle.style.top = zPixel - 10 + 'px';
+        circle.style.left = xPixel - 0 + 'px';
+        circle.style.top = zPixel - 0 + 'px';
 
         const shotNumber = document.createElement('span');
         shotNumber.textContent = shot.schot;  // Assumes the shot number property is "schot"
