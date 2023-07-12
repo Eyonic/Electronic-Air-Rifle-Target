@@ -2,8 +2,10 @@
 
 
 Description:
-The Python or HTML Target System is a simple and efficient solution that eliminates the need for individuals to walk down the range to check their shots. This system integrates a graphical user interface (GUI) that displays a target image where shots are represented as circles. The system communicates with an API to retrieve shot coordinates and updates the target image in real-time based on the received data.
 
+Started as Python program, But now I am more HTML foccuesed (beter compatibility) Target System is a simple and efficient solution that eliminates the need for individuals to walk down the range to check their shots. 
+This system integrates a graphical user interface (GUI) that displays a target image where shots are represented as circles on a tablet or phone.
+The system communicates with an API to retrieve shot coordinates and updates the target image in real-time based on the received data.
 ![Target.jpg](https://raw.githubusercontent.com/Eyonic/Electronic-Air-Rifle-Target/main/Doc/exsample-v1.jpg)
 
 
@@ -41,15 +43,22 @@ Route::get('/electronic-air-rifle-target', function () {
 The Python Target System empowers shooting enthusiasts by providing a convenient and efficient way to track their shots without the need for physical movement downrange. Its real-time updates, graphical representation, and support for multiple shots make it an invaluable tool for improving shooting accuracy and optimizing training sessions.
 
 
+#THE PLAN
 
-#TODO-List
+Arduino reports the bullet holes to your website. and you can see it being updated in real time using your tablet or phone.
 
-*Develop a Web Version - Create a web-based version of the application to make it accessible and usable on a tablet.
+*Arduino->internet->server->client
 
-*Score system and multiplayer support.
+#Development
 
-*Determine Pellet Location Detection Method - Identify an affordable and reliable sensor or method to accurately detect the location of the pellet.
+Testing Phases
+* Arduino ESP (needs atleast wifi ESP8266 or ESP32 )
+* Sensors to pinpoint bullet holes ( Microphones,camera or light)
 
+Fixing Bugs
+* Server (code works but it still need the finishing touches)
+* HTML (Graphic improvements)
+* Update the phython code (it's far behind the html)
 
 
 <a href="https://www.buymeacoffee.com/Eyonic" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
