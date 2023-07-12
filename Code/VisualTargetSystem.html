@@ -14,17 +14,23 @@
         }
 
         .circle {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: black;
-            border: 1px solid white;
-        }
+    position: relative;  /* Update from absolute to relative */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+}
 
-        .last-shot {
-            background-color: red;
-        }
+.last-shot {
+    background-color: red;
+}
+
     </style>
 
 
@@ -35,49 +41,58 @@
             .then(response => response.json())
             .then(data => {
                 var targets = data.target;
+                var totalScore = 0; // Variable to store the total score
+                var shotCount = targets.length; // Variable to store the total number of shots
 
                 // Clear previous results
                 var resultsContainer = document.getElementById("results");
                 resultsContainer.innerHTML = "";
 
                 targets.forEach(target => {
-                        var x = parseInt(target.x);
-                        var y = parseInt(target.z);
+                    var x = parseInt(target.x);
+                    var y = parseInt(target.z);
 
-                        var distance = Math.sqrt((x * x) + (y * y));
-                        var score;
+                    var distance = Math.sqrt((x * x) + (y * y));
+                    var score;
 
-                        if (distance <= 13) {
-                            score = 10;
-                        } else if (distance <= 24) {
-                            score = 9;
-                        } else if (distance <= 34) {
-                            score = 8;
-                        } else if (distance <= 44) {
-                            score = 7;
-                        } else if (distance <= 54) {
-                            score = 6;
-                        } else if (distance <= 64) {
-                            score = 5;
-                        } else if (distance <= 74) {
-                            score = 4;
-                        } else if (distance <= 84) {
-                            score = 3;
-                        } else if (distance <= 94) {
-                            score = 2;
+                    if (distance <= 13) {
+                        score = 10;
+                    } else if (distance <= 24) {
+                        score = 9;
+                    } else if (distance <= 34) {
+                        score = 8;
+                    } else if (distance <= 44) {
+                        score = 7;
+                    } else if (distance <= 54) {
+                        score = 6;
+                    } else if (distance <= 64) {
+                        score = 5;
+                    } else if (distance <= 74) {
+                        score = 4;
+                    } else if (distance <= 84) {
+                        score = 3;
+                    } else if (distance <= 94) {
+                        score = 2;
+                    } else if (distance <= 104) {
+                        score = 1;
+                    } else {
+                        score = 0;
+                    }
 
-                        } else if (distance <= 104) {
-                            score = 1;
-
-                        } else {
-                            score = 0;
-                        }
+                    totalScore += score; // Add the score to the total score
 
                     var result = "Shot: " + target.schot + " | Score: " + score;
                     var resultElement = document.createElement("p");
                     resultElement.textContent = result;
                     resultsContainer.prepend(resultElement);
                 });
+
+                var averageScore = totalScore / shotCount; // Calculate the average score
+
+                // Add average score to the top of the results
+                var averageElement = document.createElement("p");
+                averageElement.textContent = "Gemiddelde Score: " + averageScore.toFixed(2);
+                resultsContainer.prepend(averageElement);
             })
             .catch(error => {
                 console.log('Error:', error);
@@ -85,7 +100,7 @@
     }
 
     calculateScore(); // Initial calculation
-    setInterval(calculateScore, 1000); // Update every 5 seconds
+    setInterval(calculateScore, 5000); // Update every 5 seconds
 </script>
 
 
@@ -100,29 +115,34 @@
     <div id="results" style="  position: absolute;  right: 34px;  top: 20px;"></div>
 
     <script>
-        function drawCircles(shots) {
-            const canvas = document.getElementById('overlay');
-            canvas.innerHTML = '';
+       function drawCircles(shots) {
+    const canvas = document.getElementById('overlay');
+    canvas.innerHTML = '';
 
-            const image = document.getElementById('image');
-            const imageWidth = image.width;
-            const imageHeight = image.height;
+    const image = document.getElementById('image');
+    const imageWidth = image.width;
+    const imageHeight = image.height;
 
-            shots.forEach(function (shot, index) {
-                const xValue = parseFloat(shot.x);
-                const zValue = parseFloat(shot.z);
+    shots.forEach(function (shot, index) {
+        const xValue = parseFloat(shot.x);
+        const zValue = parseFloat(shot.z);
 
-                const xPixel = Math.round((xValue + 100) / 200 * imageHeight);
-                const zPixel = Math.round((zValue + 100) / 200 * imageWidth);
+        const xPixel = Math.round((xValue + 100) / 200 * imageHeight);
+        const zPixel = Math.round((zValue + 100) / 200 * imageWidth);
 
-                const circle = document.createElement('div');
-                circle.className = 'circle' + (index === shots.length - 1 ? ' last-shot' : '');
-                circle.style.left = xPixel - 25  + 'px';  // Switched with zPixel
-                circle.style.top = zPixel -10  + 'px';  // Switched with yPixel
+        const circle = document.createElement('div');
+        circle.className = 'circle' + (index === shots.length - 1 ? ' last-shot' : '');
+        circle.style.left = xPixel - 25 + 'px';
+        circle.style.top = zPixel - 10 + 'px';
 
-                canvas.appendChild(circle);
-            });
-        }
+        const shotNumber = document.createElement('span');
+        shotNumber.textContent = shot.schot;  // Assumes the shot number property is "schot"
+        circle.appendChild(shotNumber);
+
+        canvas.appendChild(circle);
+    });
+}
+
 
         function updateCoordinates() {
             const url = 'http://127.0.0.1/electronic-air-rifle-target';
