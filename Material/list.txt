@@ -1,3 +1,6 @@
-- Arduino Uno / Mega
-- Wifi module / Esp8266
-- Powerbank
+Powerful Powerbank with Dual USB Outputs
+Enhanced Arduino ESP32 with Built-in Wi-Fi and Analog Pins
+Convenient USB to Power Wire for Supplying 5 Volts to All Sensors
+4x Mic Max4466 (1+ for Extra Flexibility)
+4x LED Lights (Option to use Big LEDs without a Resistor, or Regular LEDs with a Resistor)
+Sturdy Frame: Wooden with the Option to Upgrade to a Metal Plate
