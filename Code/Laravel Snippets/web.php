@@ -80,7 +80,7 @@ Route::get('/add-shot/shot/{schot}/x/{x}/z/{z}', function ($shot, $x, $z) {
         'x' => $x,
         'z' => $z,
     ]);
-
+    // Don't redirect this one, Course it could messup the arduino code
     return "Shot added successfully!";
 });
 
