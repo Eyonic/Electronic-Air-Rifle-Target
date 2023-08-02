@@ -62,6 +62,7 @@ Testing Phases
 Fixing Bugs
 * Server (code works but it still need the finishing touches)
 * HTML (Graphic improvements)
+* Arduino code (all parts work, But I still need to put the into one working code)
 * Update the phython code (it's far behind the html)
 
 
